@@ -1,8 +1,8 @@
 import mongoose, { Document, Model, Schema, Types } from "mongoose";
+import { PostStatus } from "./post.types";
+import { POST_STATUSES } from "./post.constants";
 
-const POST_STATUSES = ["draft", "published", "archived"] as const;
 
-type PostStatus = (typeof POST_STATUSES)[number];
 
 interface IFile {
   public_id: string;
