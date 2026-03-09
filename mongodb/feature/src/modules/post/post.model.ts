@@ -43,8 +43,7 @@ const postSchema = new Schema<IPost>(
 
     slug: {
       type: String,
-      required: true,
-      unique: true
+      required: true
     }, // SEO-friendly URL slug
 
     content: {
@@ -111,8 +110,7 @@ const postSchema = new Schema<IPost>(
 
 //? indexes for efficient searching and filtering
 postSchema.index({ title: "text", content: "text" });
-postSchema.index({ slug: 1 }); // Quick lookup by slug
-postSchema.index({ author: 1 }); // Efficient retrieval of posts by author
+postSchema.index({ author: 1, slug: 1 }, { unique: true });
 postSchema.index({ category: 1 }); // Efficient retrieval of posts by category
 
 const Post: Model<IPost> =
